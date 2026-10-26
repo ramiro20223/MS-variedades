@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MS Variedades</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+/* Layout: vitrine estilo Apple. Faixas amplas, tipografia grande, fotos em cartões arredondados, alternando verde-escuro e claro. */
+:root{
+  --bg:#fbfbfd; --surface:#f2f2f4; --fg:#1d1d1f; --muted:#6b6b72; --line:#d9d9de;
+  --accent:#8a6a2c; --btn-bg:#0f2c22; --btn-fg:#f5f1e6; --nav-bg:rgba(251,251,253,.78);
+  --ink:#0d261d; --ink-2:#143428; --gold:#d6b574; --paper:#f5f1e6;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#050806; --surface:#101713; --fg:#f5f5f7; --muted:#a3a8a5; --line:#26302a;
+  --accent:#d6b574; --btn-bg:#d6b574; --btn-fg:#0d261d; --nav-bg:rgba(5,8,6,.74); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#050806; --surface:#101713; --fg:#f5f5f7; --muted:#a3a8a5; --line:#26302a;
+  --accent:#d6b574; --btn-bg:#d6b574; --btn-fg:#0d261d; --nav-bg:rgba(5,8,6,.74); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--display);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--nav-bg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* faixas */
+.band{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+.dark{--fg:#f5f5f7;--muted:#a9b3ad;--accent:var(--gold);--btn-bg:var(--gold);--btn-fg:var(--ink);--line:#2a4538;background:var(--ink);color:var(--fg)}
+.soft{background:var(--surface)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--nav-bg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand b{font-family:var(--serif);font-weight:600;font-size:30px;letter-spacing:.02em;line-height:1;color:var(--accent)}
+.brand span{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:13px}
+.nav ul a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav ul a:hover{color:var(--fg)}
+@media(max-width:820px){.nav ul{display:none}}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:980px;background:var(--btn-bg);color:var(--btn-fg);
+  text-decoration:none;font-size:15px;font-weight:500;border:1px solid transparent;transition:transform .2s,opacity .2s}
+.btn:hover{opacity:.9;transform:translateY(-1px)}
+.btn.sm{padding:8px 16px;font-size:13px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--fg)}
+.link{color:var(--accent);text-decoration:none;font-size:17px}
+.link:hover{text-decoration:underline}
+
+/* tipografia */
+.eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 14px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
+h1{font-size:clamp(44px,8.5vw,92px);line-height:1.02}
+h2{font-size:clamp(34px,5.6vw,60px);line-height:1.06}
+h3{font-size:clamp(22px,2.6vw,28px);line-height:1.15;letter-spacing:-.015em}
+em.s{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0;color:var(--accent)}
+.lead{font-size:clamp(18px,2.2vw,24px);line-height:1.4;color:var(--muted);margin:18px 0 0;text-wrap:pretty}
+p{margin:0}
+.muted{color:var(--muted)}
+
+/* hero */
+.hero{padding-block:72px 0;text-align:center;background:radial-gradient(120% 70% at 50% 0%,var(--ink-2) 0%,var(--ink) 62%)}
+.hero .lead{max-width:34ch;margin-inline:auto}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.hero-img{margin:56px auto 0;max-width:560px;border-radius:28px 28px 0 0;overflow:hidden;position:relative}
+.hero-img img{width:100%;height:auto}
+
+/* seções */
+section{padding-block:96px}
+.head{text-align:center;max-width:760px;margin:0 auto 56px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split>*{min-width:0}
+.split.flip .copy{order:2}
+.photo{border-radius:28px;overflow:hidden;background:var(--surface)}
+.photo img{width:100%;height:auto;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.photo:hover img{transform:scale(1.03)}
+.copy .lead{max-width:36ch}
+.facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0;max-width:440px}
+.facts li{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-top:1px solid var(--line);font-size:15px}
+.facts li:last-child{border-bottom:1px solid var(--line)}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{text-align:right}
+.copy .cta{justify-content:flex-start;margin-top:32px;align-items:center}
+
+/* trio de perfumes */
+.names{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;max-width:520px}
+.names div{padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.names small{display:block;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{background:var(--surface);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.tile .photo{border-radius:0;aspect-ratio:1/1}
+.tile .txt{padding:26px 28px 30px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tile .txt p{color:var(--muted);font-size:15px}
+.tile .txt .link{margin-top:auto;padding-top:12px;font-size:16px}
+.tile.tall .photo{aspect-ratio:4/5}
+
+/* etapas */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{padding:30px 28px;border-radius:28px;background:var(--surface)}
+.step b{display:block;font-family:var(--serif);font-size:44px;line-height:1;color:var(--accent);font-weight:500;margin-bottom:14px}
+.step p{color:var(--muted);font-size:15px;margin-top:8px}
+
+/* contato */
+.contact{text-align:center}
+.contact .lead{max-width:40ch;margin-inline:auto}
+.phone{font-size:clamp(28px,5vw,44px);letter-spacing:-.02em;font-weight:600;margin-top:28px;font-variant-numeric:tabular-nums}
+
+footer{padding-block:36px 44px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--fg)}
+.credit a{color:var(--accent);border-color:transparent;font-weight:600}
+.credit a:hover{color:var(--accent);border-color:var(--accent)}
+
+@media(max-width:900px){
+  section{padding-block:64px}
+  .split{grid-template-columns:1fr;gap:36px}
+  .split.flip .copy{order:0}
+  .bento,.steps{grid-template-columns:1fr}
+  .tile .photo{aspect-ratio:4/4.4}
+  .hero{padding-top:48px}
+  .head{margin-bottom:36px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="MS Variedades, início"><b>MS</b><span>Variedades</span></a>
+    <ul>
+      <li><a href="#joias">Joias</a></li>
+      <li><a href="#perfumaria">Perfumaria</a></li>
+      <li><a href="#cuidados">Cuidados</a></li>
+      <li><a href="#make">Maquiagem</a></li>
+      <li><a href="#moda">Moda</a></li>
+    </ul>
+    <a class="btn sm" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20MS%20Variedades." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main id="topo">
+<!-- HERO -->
+<div class="band dark hero">
+  <div class="wrap">
+    <p class="eyebrow">Aço inoxidável 316L</p>
+    <h1>Brilho que combina<br>com <em class="s">você.</em></h1>
+    <p class="lead">Joias, perfumes, cuidados e maquiagem escolhidos com carinho, para o seu dia a dia e para as ocasiões especiais.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20conhecer%20as%20novidades%20da%20MS%20Variedades." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn ghost" href="https://www.whatsapp.com/catalog/5585921692034/" target="_blank" rel="noopener">Ver catálogo completo</a>
+    </div>
+    <div class="hero-img">
+      <img src="img/conjunto-trevo.jpg" width="1560" height="1965" alt="Conjunto de colar e brincos em formato de trevo preto com borda dourada e cristal central, em aço inoxidável 316L">
+    </div>
+  </div>
+</div>
+
+<!-- JOIAS -->
+<section id="joias">
+  <div class="wrap">
+    <div class="split">
+      <div class="photo"><img src="img/conjunto-trevo.jpg" width="1560" height="1965" loading="lazy" alt="Conjunto trevo preto e dourado com colar e brincos"></div>
+      <div class="copy">
+        <p class="eyebrow">Joias</p>
+        <h2>Trevo preto, <em class="s">detalhe dourado.</em></h2>
+        <p class="lead">Colar e brincos combinando, com um cristal no centro de cada trevo. Elegante para o trabalho e para sair à noite.</p>
+        <ul class="facts">
+          <li><span>Material</span><span>Aço inoxidável 316L</span></li>
+          <li><span>Peças</span><span>Colar e par de brincos</span></li>
+          <li><span>Acabamento</span><span>Dourado com cristal</span></li>
+        </ul>
+        <div class="cta"><a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Tenho%20interesse%20no%20conjunto%20trevo%20preto%20e%20dourado." target="_blank" rel="noopener">Quero o conjunto</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band soft" style="padding-block:96px">
+  <div class="wrap">
+    <div class="split flip">
+      <div class="photo"><img src="img/acessorios.jpg" width="1894" height="1894" loading="lazy" style="aspect-ratio:1/1" alt="Presilha de borboleta com cristais e argolas em aço inoxidável ao lado da sacola da loja"></div>
+      <div class="copy">
+        <p class="eyebrow">Acessórios</p>
+        <h2>Presilhas e argolas <em class="s">com brilho.</em></h2>
+        <p class="lead">Presilha de borboleta com pedras e argolas cravejadas, entregues na embalagem da loja, prontas para presentear.</p>
+        <div class="cta"><a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20ver%20presilhas%20e%20argolas." target="_blank" rel="noopener">Ver opções</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFUMARIA -->
+<section id="perfumaria">
+  <div class="wrap">
+    <div class="split">
+      <div class="copy">
+        <p class="eyebrow">Perfumaria</p>
+        <h2>Body splash <em class="s">em três assinaturas.</em></h2>
+        <p class="lead">Frascos de 100 ml com tampa metalizada, para perfumar o corpo com leveza e levar na bolsa.</p>
+        <div class="names">
+          <div><small>Rosa</small>Classy Blush</div>
+          <div><small>Azul</small>Acqua Horse</div>
+          <div><small>Vermelho</small>Unique Essence</div>
+        </div>
+        <div class="cta"><a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20body%20splash%20JNY." target="_blank" rel="noopener">Escolher meu body splash</a></div>
+      </div>
+      <div class="photo"><img src="img/body-splash.jpg" width="1280" height="1840" loading="lazy" alt="Três body splash de 100 ml: Classy Blush rosa, Acqua Horse azul e Unique Essence vermelho"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CUIDADOS -->
+<div class="band dark">
+  <section id="cuidados">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="photo"><img src="img/esfoliantes.jpg" width="1280" height="1690" loading="lazy" alt="Esfoliantes corporais e faciais Bio Instinto nos aromas pêssego, morango e framboesa"></div>
+        <div class="copy">
+          <p class="eyebrow">Cuidados com a pele</p>
+          <h2>Pele macia, <em class="s">cheirosa e renovada.</em></h2>
+          <p class="lead">Esfoliante para rosto e corpo da Bio Instinto. Desobstrui os poros e elimina impurezas.</p>
+          <ul class="facts">
+            <li><span>Aromas</span><span>Pêssego, morango e framboesa</span></li>
+            <li><span>Conteúdo</span><span>150 g</span></li>
+            <li><span>Uso</span><span>Rosto e corpo</span></li>
+          </ul>
+          <div class="cta"><a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20o%20esfoliante%20Bio%20Instinto." target="_blank" rel="noopener">Pedir esfoliante</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- MAQUIAGEM -->
+<section id="make">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Maquiagem</p>
+      <h2>O toque final <em class="s">do seu look.</em></h2>
+      <p class="lead">Cílios marcantes e lábios com brilho ou acabamento matte.</p>
+    </div>
+    <div class="bento">
+      <article class="tile">
+        <div class="photo" style="aspect-ratio:4/5"><img src="img/rimel.jpg" width="1420" height="1894" loading="lazy" alt="Três máscaras de cílios Sarah's Beauty em frasco vermelho em formato de salto alto"></div>
+        <div class="txt"><h3>Máscara de cílios</h3><p>Sarah's Beauty, no frasco em formato de salto alto vermelho e dourado.</p>
+          <a class="link" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20a%20m%C3%A1scara%20de%20c%C3%ADlios%20Sarah's%20Beauty." target="_blank" rel="noopener">Pedir no WhatsApp ›</a></div>
+      </article>
+      <article class="tile">
+        <div class="photo" style="aspect-ratio:4/5"><img src="img/gloss.jpg" width="1894" height="1894" loading="lazy" alt="Três lip oils com tampa em formato de laço rosa e vermelho"></div>
+        <div class="txt"><h3>Lip oil com tampa fofa</h3><p>Brilho transparente em tubo cristal com tampa decorada em rosa.</p>
+          <a class="link" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20o%20lip%20oil%20rosa%20com%20tampa%20decorada." target="_blank" rel="noopener">Pedir no WhatsApp ›</a></div>
+      </article>
+      <article class="tile">
+        <div class="photo" style="aspect-ratio:4/5"><img src="img/lip-matte.jpg" width="1894" height="1894" loading="lazy" alt="Três batons líquidos Lip Matte Velvet da coleção Love is Love"></div>
+        <div class="txt"><h3>Lip Matte Velvet</h3><p>Batom líquido da coleção Love is Love, em tons de rosa e vinho.</p>
+          <a class="link" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20o%20Lip%20Matte%20Velvet." target="_blank" rel="noopener">Pedir no WhatsApp ›</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODA -->
+<div class="band soft">
+  <section id="moda">
+    <div class="wrap">
+      <div class="split">
+        <div class="photo" style="max-width:480px;margin-inline:auto;width:100%"><img src="img/vestido.jpg" width="1064" height="1760" loading="lazy" alt="Vestido curto marrom drapeado com gola frente única e babado, com bolsa dourada de alça corrente"></div>
+        <div class="copy">
+          <p class="eyebrow">Moda</p>
+          <h2>Marrom chocolate, <em class="s">bolsa dourada.</em></h2>
+          <p class="lead">Vestido curto com frente única, franzido no corpo e babado na barra. Combina com a bolsa dourada de alça corrente.</p>
+          <div class="cta"><a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Quero%20o%20vestido%20marrom%20e%20a%20bolsa%20dourada." target="_blank" rel="noopener">Perguntar tamanhos</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- COMO COMPRAR -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Como comprar</p>
+      <h2>Simples, <em class="s">direto no WhatsApp.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><b>I</b><h3>Escolha</h3><p>Veja as peças aqui, no Instagram ou no catálogo do WhatsApp.</p></div>
+      <div class="step"><b>II</b><h3>Chame a loja</h3><p>Toque em qualquer botão e a mensagem já sai pronta com o produto.</p></div>
+      <div class="step"><b>III</b><h3>Combine</h3><p>Tire dúvidas sobre cores, tamanhos, pagamento e entrega com a equipe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<div class="band dark contact">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Fale com a MS Variedades</p>
+      <h2>Vamos achar a sua <em class="s">peça perfeita.</em></h2>
+      <p class="lead">Atendimento pelo WhatsApp e novidades todos os dias no Instagram.</p>
+      <p class="phone">(85) 92169-2034</p>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/5585921692034?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20MS%20Variedades." target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/msvariedadesemgeral" target="_blank" rel="noopener">@msvariedadesemgeral</a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MS Variedades. Todos os direitos reservados.</span>
+    <span class="credit">Site criado por <a href="https://www.instagram.com/ramiroo_rodriguess" target="_blank" rel="noopener">@ramiroo_rodriguess</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
